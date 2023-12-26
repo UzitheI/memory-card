@@ -28,6 +28,9 @@ export default function App(){
     }
     const handleChoice=(card)=>{
         choiceOne ? setchoiceTwo(card):setchoiceOne(card)
+        if(choiceOne.src===choiceTwo.src){
+            console.log('cards match')
+        }
     }
     
     return(
