@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 const cardImages=[
-    {'src':'./assets/angular.svg'},
-    {'src':'./assets/aurelia'},
-    {'src':'./assets/backbone.svg'},
-    {'src':'./assets/ember.svg'},
-    {'src':'./assets/js-badge.svg'},
-    {'src':'./assets/vue.svg'}
+    {'src':'../src/assets/angular.svg'},
+    {'src':'../src/assets/aurelia.svg'},
+    {'src':'../src/assets/backbone.svg'},
+    {'src':'../src/assets/ember.svg'},
+    {'src':'../src/assets/js-badge.svg'},
+    {'src':'../src/assets/vue.svg'}
 ]
 //array of images outside of the function because we dont want them to re render everytime the App renders
 
@@ -28,6 +28,14 @@ export default function App(){
         <div className='w-max mx-auto my-30'>
             <h1>Magic Match</h1>
             <button className='bg-none border border-red-200 px-6 py-12 rounded-lg text-red-300 font-bold cursor-pointer text-2 hover:bg-red-600 hover:text-red-100' onClick={shuffleCards}>New Game</button>
+            <div className='mt-4 grid grid-cols-4 gap-8'>
+                {cards.map(card=>(
+                    <div key={card.id}>
+                        <img src={card.src} alt="front-image" />
+                        <img src="../src/assets/images.png" alt="back-image" />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
