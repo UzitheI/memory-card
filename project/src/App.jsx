@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import SingleCard from './components/SingleCard.jsx'
 const cardImages=[
-    {'src':'../src/assets/angular.svg'},
-    {'src':'../src/assets/aurelia.svg'},
-    {'src':'../src/assets/backbone.svg'},
+    {'src':'../src/assets/angular.svg',matched:false},
+    {'src':'../src/assets/aurelia.svg',matched:false},
+    {'src':'../src/assets/backbone.svg',matched:false},
     {'src':'../src/assets/ember.svg'},
-    {'src':'../src/assets/js-badge.svg'},
-    {'src':'../src/assets/vue.svg'}
+    {'src':'../src/assets/js-badge.svg',matched:false},
+    {'src':'../src/assets/vue.svg',matched:false}
 ]
 //array of images outside of the function because we dont want them to re render everytime the App renders
 
@@ -40,15 +40,30 @@ export default function App(){
     useEffect(()=>{
         if(choiceOne && choiceTwo){
             if(choiceOne.src===choiceTwo.src){
-                console.log('those cards match')
+               setCards(prevCards=>{
+                return prevCards.map(
+                    card=>{
+                        if(card.src === choiceOne.src){
+                            return{
+                                ...card,matched:true
+                            }
+                        }
+                        else{
+                            return card
+                        }
+                    }
+                )
+               })
                 resetTurn()
             }
             else{
-                console.log('those cards didnt match')
-                resetTurn()
+                setTimeout(()=>
+                resetTurn(),1000
+                )
             }
         }
     },[choiceOne, choiceTwo])
+    console.log(cards)
     return(
         <div className='w-max mx-auto my-30'>
             <h1>Magic Match</h1>
@@ -56,7 +71,8 @@ export default function App(){
             <div className='mt-8 grid grid-cols-4 gap-2'>
                 {cards.map(card=>(
                     <SingleCard key={card.id} card={card}
-                    handleChoice={handleChoice}/>
+                    handleChoice={handleChoice} 
+                    flipped={card === choiceOne ||card === choiceTwo ||card.matched}/>
                 ))}
             </div>
         </div>
