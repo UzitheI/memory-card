@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import SingleCard from './components/SingleCard.jsx'
 const cardImages=[
@@ -28,11 +28,27 @@ export default function App(){
     }
     const handleChoice=(card)=>{
         choiceOne ? setchoiceTwo(card):setchoiceOne(card)
-        if(choiceOne.src===choiceTwo.src){
-            console.log('cards match')
-        }
     }
-    
+    //reset choices and increse turn
+
+    const resetTurn=()=>{
+        setchoiceOne(null)
+        setchoiceTwo(null)
+        setTurns(prevTurns=>prevTurns+1)
+    }
+    //compare 2 cards id
+    useEffect(()=>{
+        if(choiceOne && choiceTwo){
+            if(choiceOne.src===choiceTwo.src){
+                console.log('those cards match')
+                resetTurn()
+            }
+            else{
+                console.log('those cards didnt match')
+                resetTurn()
+            }
+        }
+    },[choiceOne, choiceTwo])
     return(
         <div className='w-max mx-auto my-30'>
             <h1>Magic Match</h1>
