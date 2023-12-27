@@ -86,7 +86,7 @@ export default function App(){
             <p className='mt-6'>turns:{turns}</p>
             <div className='flex justify-end'>
 
-            <a href='https://github.com/UzitheI/memory-card' className='relative bottom-8 border border-white rounded-lg p-2 pointer '>Github</a>
+            <a href='https://github.com/UzitheI/memory-card/tree/main/project' className='relative bottom-8 border border-white rounded-lg p-2 pointer '>Github</a>
             </div>
             
         </div>
