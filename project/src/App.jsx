@@ -18,6 +18,7 @@ export default function App(){
     const[turns,setTurns]=useState(0)
     const[choiceOne, setchoiceOne]=useState(null);
     const[choiceTwo,setchoiceTwo]=useState(null);
+    const[disabled,setDisabled]=useState(false)
 
     //created a function which duplicates the array of images, sorts it on the basis of positive and negative value of math.random and assigns an id on the basis of it
     const shuffleCards =()=>{
@@ -31,14 +32,10 @@ export default function App(){
     }
     //reset choices and increse turn
 
-    const resetTurn=()=>{
-        setchoiceOne(null)
-        setchoiceTwo(null)
-        setTurns(prevTurns=>prevTurns+1)
-    }
     //compare 2 cards id
     useEffect(()=>{
         if(choiceOne && choiceTwo){
+            setDisabled(true)
             if(choiceOne.src===choiceTwo.src){
                setCards(prevCards=>{
                 return prevCards.map(
@@ -63,6 +60,12 @@ export default function App(){
             }
         }
     },[choiceOne, choiceTwo])
+    const resetTurn=()=>{
+        setchoiceOne(null)
+        setchoiceTwo(null)
+        setTurns(prevTurns=>prevTurns+1)
+        setDisabled(false)
+    }
     console.log(cards)
     return(
         <div className='w-max mx-auto my-30'>
@@ -72,7 +75,8 @@ export default function App(){
                 {cards.map(card=>(
                     <SingleCard key={card.id} card={card}
                     handleChoice={handleChoice} 
-                    flipped={card === choiceOne ||card === choiceTwo ||card.matched}/>
+                    flipped={card === choiceOne ||card === choiceTwo ||card.matched}
+                    disabled={disabled}/>
                 ))}
             </div>
         </div>
