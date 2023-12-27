@@ -23,7 +23,8 @@ export default function App(){
     //created a function which duplicates the array of images, sorts it on the basis of positive and negative value of math.random and assigns an id on the basis of it
     const shuffleCards =()=>{
         const shuffledCards=[...cardImages, ...cardImages].sort(()=>Math.random() - 0.5).map((card)=>({...card,id:Math.random()}))
-
+        setchoiceOne(null)
+        setchoiceTwo(null)
         setCards(shuffledCards);
         setTurns(0);
     }
@@ -66,6 +67,9 @@ export default function App(){
         setTurns(prevTurns=>prevTurns+1)
         setDisabled(false)
     }
+    useEffect(()=>{
+        shuffleCards()
+    },[])
     console.log(cards)
     return(
         <div className='w-max mx-auto my-30'>
@@ -79,6 +83,7 @@ export default function App(){
                     disabled={disabled}/>
                 ))}
             </div>
+            <p>turns:{turns}</p>
         </div>
     );
 }
