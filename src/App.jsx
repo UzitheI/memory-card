@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import SingleCard from './components/SingleCard.jsx'
 const cardImages=[
-    {'src':'./assets/eight.jpeg',matched:false},
-    {'src':'./assets/one.png',matched:false},
-    {'src':'./assets/seven.png',matched:false},
-    {'src':'./assets/king.png',matched:false},
-    {'src':'./assets/five.jpeg',matched:false},
-    {'src':'./assets/joker.png',matched:false}
+    {'src':'https://tekeye.uk/playing_cards/images/svg_playing_cards/fronts/png_96_dpi/hearts_8.png',matched:false},
+    {'src':'https://tekeye.uk/playing_cards/images/svg_playing_cards/fronts/png_96_dpi/hearts_ace.png',matched:false},
+    {'src':'https://tekeye.uk/playing_cards/images/svg_playing_cards/fronts/png_96_dpi/hearts_7.png',matched:false},
+    {'src':'https://tekeye.uk/playing_cards/images/svg_playing_cards/fronts/png_96_dpi/hearts_king.png',matched:false},
+    {'src':'https://tekeye.uk/playing_cards/images/svg_playing_cards/fronts/png_96_dpi/hearts_5.png',matched:false},
+    {'src':'https://tekeye.uk/playing_cards/images/svg_playing_cards/fronts/png_96_dpi/hearts_jack.png',matched:false}
 ]
 //array of images outside of the function because we dont want them to re render everytime the App renders
 
