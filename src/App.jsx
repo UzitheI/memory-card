@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import SingleCard from './components/SingleCard.jsx'
 const cardImages=[
-    {'src':'./src/assets/eight.jpeg',matched:false},
-    {'src':'./src/assets/one.png',matched:false},
-    {'src':'./src/assets/seven.png',matched:false},
-    {'src':'./src/assets/king.png'},
-    {'src':'./src/assets/five.jpeg',matched:false},
-    {'src':'./src/assets/joker.png',matched:false}
+    {'src':'./assets/eight.jpeg',matched:false},
+    {'src':'./assets/one.png',matched:false},
+    {'src':'./assets/seven.png',matched:false},
+    {'src':'./assets/king.png',matched:false},
+    {'src':'./assets/five.jpeg',matched:false},
+    {'src':'./assets/joker.png',matched:false}
 ]
 //array of images outside of the function because we dont want them to re render everytime the App renders
 
